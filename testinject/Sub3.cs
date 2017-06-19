@@ -8,8 +8,8 @@ namespace testinject
 {
     public class Sub3
     {
-        public ICollection<int> Ints { get; set; }
-        public int Int { get; set; }
-        public string String { get; set; }
+        public virtual ICollection<int> Ints { get; set; }
+        public virtual int Int { get; set; }
+        public virtual string String { get; set; }
     }
 }

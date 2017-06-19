@@ -9,6 +9,8 @@ namespace testinject
 {
     public static class TryParser
     {
+        private static readonly MethodInfo NullableInfo = typeof(TryParser).GetMethod("Nullable");
+
         private delegate bool TryParseDelegate<T>(string stringValue, out T instance) where T : struct;
 
         private static readonly ConcurrentDictionary<Type, Lazy<Delegate>> TryParseMethods =
@@ -36,16 +38,17 @@ namespace testinject
             if (value is DateTime) return (DateTime?)value;
             var stringValue = $"{value}";
             if (string.IsNullOrEmpty(stringValue)) return null;
-
+            DateTime date;
             if (System.DateTime.TryParseExact(
                 stringValue, Formats,
                 CultureInfo.InvariantCulture,
-                DateTimeStyles.None, out DateTime date))
+                DateTimeStyles.None, out date))
                 return date;
 
             date = new DateTime(1899, 12, 30);
+            double doubleValue;
 
-            if (double.TryParse(stringValue, out double doubleValue) &&
+            if (double.TryParse(stringValue, out doubleValue) &&
                 (doubleValue <= 2958465) &&
                 (doubleValue >= -693593))
                 return date.AddDays(doubleValue);
@@ -59,13 +62,13 @@ namespace testinject
             var stringValue = $"{value}";
             if (string.IsNullOrEmpty(stringValue)) return null;
             var tryParse = GetDelegate<T>(TryParseMethods);
-            if ((tryParse != null) && (tryParse(stringValue, out T returnvalue))) return returnvalue;
+            T returnvalue;
+            if ((tryParse != null) && (tryParse(stringValue, out returnvalue))) return returnvalue;
             return null;
         }
 
         public static Expression<Func<object, TProp>> CreateConvertFunctionExpression<TProp>()
         {
-            var nullableInfo = typeof(TryParser).GetMethod("Nullable");
             var memberType = typeof(TProp);
             MethodInfo convertMethod;
 
@@ -74,13 +77,13 @@ namespace testinject
                 var genericType = memberType.GenericTypeArguments[0];
                 if (genericType == typeof(DateTime)) return o => (TProp)((object)DateTime(o));
 
-                convertMethod = nullableInfo.MakeGenericMethod(genericType);
+                convertMethod = NullableInfo.MakeGenericMethod(genericType);
                 return o => (TProp)convertMethod.Invoke(null, new[] { o });
             }
 
             if (!memberType.IsValueType) return o => (TProp)o;
 
-            convertMethod = nullableInfo.MakeGenericMethod(memberType);
+            convertMethod = NullableInfo.MakeGenericMethod(memberType);
             if (memberType != typeof(DateTime))
                 return o => (TProp)(convertMethod.Invoke(null, new[] { o }) ?? default(TProp));
 
