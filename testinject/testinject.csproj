@@ -47,7 +47,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PropertyMapping.cs" />
     <Compile Include="Sub3.cs" />
     <Compile Include="TryParser.cs" />
     <Compile Include="Main.cs" />
