@@ -23,7 +23,6 @@ namespace testinject
                 }
             };
 
-            
             PropertyFunctionProvider.SetProperty(main, "Lots_1_Subb_2_Int", "20", mappings);
             PropertyFunctionProvider.SetProperty(main, "Field7", "2017-11-13", mappings);
 
