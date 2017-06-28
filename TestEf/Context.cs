@@ -38,13 +38,13 @@ namespace TestEf
             //modelBuilder.Properties<decimal>()
             //    .Configure(p=>);
 
-            foreach (var type in typeof(Student).Assembly.GetTypes())
+            foreach (var type in typeof(Student).Assembly.GetTypes().Where(t=>t!=typeof(StudentPlus)))
             {
                 var configType = typeof(EntityTypeConfiguration<>).MakeGenericType(type);
                 var config = Activator.CreateInstance(configType);
                 var genInfo = AddConfigMethodInfo.MakeGenericMethod(type);
-                
-                genInfo.Invoke(modelBuilder.Configurations, new[] {config});
+
+                genInfo.Invoke(modelBuilder.Configurations, new[] { config });
             }
 
         }

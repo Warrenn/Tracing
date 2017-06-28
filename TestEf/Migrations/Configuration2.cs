@@ -5,15 +5,15 @@ namespace TestEf.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<TestEf.Context>
+    public sealed class Configuration2 : DbMigrationsConfiguration<TestEf.Context2>
     {
-        public Configuration()
+        public Configuration2()
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(TestEf.Context context)
+        protected override void Seed(TestEf.Context2 context)
         {
             //  This method will be called after migrating to the latest version.
 

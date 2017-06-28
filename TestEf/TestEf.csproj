@@ -50,11 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
+    <Compile Include="Context2.cs" />
+    <Compile Include="DbInit2.cs" />
     <Compile Include="DbInit.cs" />
     <Compile Include="Migrations\201706192039569_update1.cs" />
     <Compile Include="Migrations\201706192039569_update1.Designer.cs">
       <DependentUpon>201706192039569_update1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration2.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

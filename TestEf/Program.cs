@@ -12,19 +12,29 @@ namespace TestEf
     {
         static void Main(string[] args)
         {
-            using (var ctx = new Context())
+            //using (var ctx = new Context())
+            //{
+            //    var lectures = ctx.Set<Lecture>();
+            //    var students = ctx.Set<Student>();
+
+            //    var lecture = lectures.Find(1);
+            //    var studentp = students.Create();
+
+            //    lecture.Students.Add(studentp);
+            //    studentp.Name = "Studentp";
+            //    studentp.Plus = "Plus";
+
+            //    ctx.SaveChanges();
+            //}
+            using (var ctx = new Context2())
             {
-                var lectures = ctx.Set<Lecture>();
-                var students = ctx.Set<Student>();
+                var students = ctx.Students;
 
-                var lecture = lectures.Create();
-                lecture.LectureName = "hello4";
+                var studentp = students.Find(1007);
 
-                var student = new Student {Name = "student a4"};
+                studentp.Name = "Student check";
+                studentp.Age = 33;
 
-                lecture.Students = new Collection<Student> {student};
-
-                lectures.Add(lecture);
                 ctx.SaveChanges();
             }
         }
