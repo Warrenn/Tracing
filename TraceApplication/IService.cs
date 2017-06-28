@@ -9,15 +9,14 @@ namespace TraceApplication
 {
     public interface IService
     {
-        [Authorize]
-        int DoSomething(int id);
+        int GetDoSomething(int id);
     }
 
     public class Service : IService
     {
         #region Implementation of IService
 
-        public int DoSomething(int id)
+        public int GetDoSomething(int id)
         {
             return id;
         }

@@ -25,7 +25,7 @@ namespace TraceApplication
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{action}/{id}",
+                routeTemplate: "api/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional },
                 handler: new CustomControllerDispatcher<IService>(config),
                 constraints: null
@@ -43,8 +43,6 @@ namespace TraceApplication
                 .Returns(dismock.Object);
 
             config.DependencyResolver = dirmock.Object;
-
-            var p = config.Services.GetFilterProviders();
 
             var actionSelector = config.Services.GetActionSelector();
             config.Services.Replace(typeof(IHttpActionSelector), new CustomActionSelector(actionSelector));

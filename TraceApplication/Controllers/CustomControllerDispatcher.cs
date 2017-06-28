@@ -25,11 +25,7 @@ namespace TraceApplication.Controllers
 
         public CustomControllerDispatcher(HttpConfiguration configuration)
         {
-            if (configuration == null)
-            {
-                throw new ArgumentNullException(nameof(configuration));
-            }
-
+            CustomControllerManager.CreateController<T>(configuration);
             this.configuration = configuration;
         }
 
@@ -52,9 +48,6 @@ namespace TraceApplication.Controllers
             set { exceptionHandler = value; }
         }
 
-        private IHttpControllerSelector ControllerSelector
-            => controllerSelector ?? (controllerSelector = configuration.Services.GetHttpControllerSelector());
-
         /// <summary>
         /// Dispatches an incoming <see cref="HttpRequestMessage"/> to an <see cref="IHttpController"/>.
         /// </summary>
@@ -74,10 +67,7 @@ namespace TraceApplication.Controllers
 
             try
             {
-                var controllerDescriptor = new CustomControllerDescriptor<T>
-                {
-                    Configuration = request.GetConfiguration()
-                };
+                var controllerDescriptor = CustomControllerManager.GetDescriptor<T>();
 
                 var controller = controllerDescriptor.CreateController(request);
                 if (controller == null)

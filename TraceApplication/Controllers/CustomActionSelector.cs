@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Http.Controllers;
 
 namespace TraceApplication.Controllers
@@ -16,12 +17,24 @@ namespace TraceApplication.Controllers
 
         public HttpActionDescriptor SelectAction(HttpControllerContext controllerContext)
         {
-            var descriptor = new CustomActionDescriptor<IService>(
-                controllerContext.ControllerDescriptor,
-                typeof(IService).GetMethod("DoSomething"));
-            return descriptor;
-            //controllerContext.Request.
-            // return new CustomActionDescriptor((ReflectedHttpActionDescriptor) descriptor);
+            var actions =
+                CustomControllerManager.GetActionDescriptors(controllerContext.ControllerDescriptor.ControllerType);
+            if (actions == null)
+            {
+                return selector.SelectAction(controllerContext);
+            }
+
+            var actionName = (string)controllerContext.RouteData.Values["action"];
+
+            foreach (var action in actions)
+            {
+                if (string.Equals(action.ActionName, actionName, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return action;
+                }
+            }
+
+            return selector.SelectAction(controllerContext);
         }
 
         public ILookup<string, HttpActionDescriptor> GetActionMapping(HttpControllerDescriptor controllerDescriptor)
