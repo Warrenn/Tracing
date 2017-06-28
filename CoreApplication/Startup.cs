@@ -4,14 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Abstractions;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace WebApplication2
+namespace CoreApplication
 {
     public class Startup
     {
@@ -32,11 +29,6 @@ namespace WebApplication2
         {
             // Add framework services.
             services.AddMvc();
-            IActionFilter dk;
-            IFilterMetadata f;
-            IAsyncActionFilter ffl;
-            IMvcCoreBuilder builder;
-            IControllerModelConvention ff;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
