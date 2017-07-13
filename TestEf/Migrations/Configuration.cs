@@ -10,7 +10,9 @@ namespace TestEf.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationDataLossAllowed = false;
+
+            SetSqlGenerator("System.Data.SqlClient", new TestGenerator());
         }
 
         protected override void Seed(TestEf.Context context)

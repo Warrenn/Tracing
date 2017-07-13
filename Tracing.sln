@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnableTracing", "EnableTracing\EnableTracing.csproj", "{0A3E9068-98C4-404C-BCE1-72E9011D8099}"
 EndProject
@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEf", "TestEf\TestEf.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraceApplication", "TraceApplication\TraceApplication.csproj", "{FD9BE7AE-0E95-4121-870A-1D9F5F083526}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreApplication", "CoreApplication\CoreApplication.csproj", "{3E4A01D4-E696-4ADE-96B7-2B1F7B386D59}"
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TestEFDb", "TestEFDb\TestEFDb.sqlproj", "{268C0CC5-48B2-4D43-BC0B-6CED4D8CF400}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +53,12 @@ Global
 		{FD9BE7AE-0E95-4121-870A-1D9F5F083526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD9BE7AE-0E95-4121-870A-1D9F5F083526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD9BE7AE-0E95-4121-870A-1D9F5F083526}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E4A01D4-E696-4ADE-96B7-2B1F7B386D59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E4A01D4-E696-4ADE-96B7-2B1F7B386D59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E4A01D4-E696-4ADE-96B7-2B1F7B386D59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E4A01D4-E696-4ADE-96B7-2B1F7B386D59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268C0CC5-48B2-4D43-BC0B-6CED4D8CF400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268C0CC5-48B2-4D43-BC0B-6CED4D8CF400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268C0CC5-48B2-4D43-BC0B-6CED4D8CF400}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{268C0CC5-48B2-4D43-BC0B-6CED4D8CF400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{268C0CC5-48B2-4D43-BC0B-6CED4D8CF400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268C0CC5-48B2-4D43-BC0B-6CED4D8CF400}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
